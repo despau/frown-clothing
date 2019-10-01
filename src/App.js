@@ -77,15 +77,12 @@ class App extends React.Component {
   }
 }
 
-//we need our user to check if signed-in or signed-out
-// so well distructure our userReducer from state and pass it as user
-//return our current user props set to user.currentUser
+//provide the store data to your component
 const mapStateToProps = ({ user }) => ({
   currentUser: user.currentUser
 })
 
-// we dont need current user here.
-//whatever action is passed to dispatch, will be sent to every reducer
+//provide the action creators as props to your component
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 })
