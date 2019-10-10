@@ -17,3 +17,14 @@ export const selectCollection = collectionUrlParam =>
     [selectCollections],
     collections => collections ? collections[collectionUrlParam] : null
   );
+
+export const selectIsCollectionFetching = createSelector(
+  [selectShop],
+  shop => shop.isFetching
+)
+
+// !! 2 exclamation points to get the boolean of any format. example: !!0 = false; !!null = false; !!{} = true; !!""=false;
+export const selectIsCollectionsLoaded = createSelector(
+  [selectShop],
+  shop => !!shop.collections
+)
