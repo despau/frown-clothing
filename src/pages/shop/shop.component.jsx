@@ -27,12 +27,18 @@ class ShopPage extends React.Component {
 
     const collectionRef = firestore.collection('collections');
 
-    this.unsubsccribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
-      const collectionsMap = converCollectionsSnapshotToMap(snapshot);
-      updateCollections(collectionsMap);
-      this.setState({ loading: false });
-    });
+    // this.unsubsccribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
+    // const collectionsMap = converCollectionsSnapshotToMap(snapshot);
+    //   updateCollections(collectionsMap);
+    //   this.setState({ loading: false });
+    // });
 
+      collectionRef.get().then( snapshot => {
+          const collectionsMap = converCollectionsSnapshotToMap(snapshot);
+          updateCollections(collectionsMap);
+          this.setState({ loading: false });
+        }
+      );
     
   };
 
