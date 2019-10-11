@@ -1,6 +1,6 @@
 import ShopActionTypes from './shop.types';
 
-import { firestore, converCollectionsSnapshotToMap } from './../../firebase/firebase.utils'
+import { firestore, convertCollectionsSnapshotToMap } from './../../firebase/firebase.utils'
 
 
 export const fetchCollectionsStart = () => ({
@@ -27,7 +27,7 @@ export const fetchCollectionsStartAsync = () => {
 
         collectionRef.get().then(
             snapshot => {
-            const collectionsMap = converCollectionsSnapshotToMap(snapshot);
+            const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
             //2nd dispatch (doneFetching) ----> set state with the returned payload (collectionsMap)
             dispatch(fetchCollectionsSuccess(collectionsMap));
 
